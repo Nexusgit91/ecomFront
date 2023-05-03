@@ -1,3 +1,4 @@
+import { AddToCart } from "./AddToCart";
 import React, { useState } from "react";
 import "../ProductList.css";
 
@@ -17,6 +18,7 @@ import {
 } from "react-bootstrap";
 
 import { dressProducts } from "../Datajson/dressProducts";
+import Products from "./Products";
 
 import VideoBanner from "../../VideoBanner/VideoBanner";
 import IconGrid from "../../IconGrid/IconGrid";
@@ -24,6 +26,7 @@ import IconGrid from "../../IconGrid/IconGrid";
 import DressCart from "./DressCart";
 import TimeComponent from "../Timer/TimeComponet";
 import ProductModal from "./ProductModal";
+import styled from "styled-components";
 //Component
 function Dress() {
   const products = dressProducts;
@@ -153,7 +156,7 @@ function Dress() {
       <VideoBanner videoName={"raymond"} />
       <IconGrid />
 
-      <Container>
+      <div className="section-center">
         <Row className="mb-3" style={{ marginTop: "60px" }}>
           <Col>
             <Form.Control
@@ -166,173 +169,37 @@ function Dress() {
           </Col>
         </Row>
 
-        <Row>
-          <Col md={8}>
-            <Row>
-              {filteredProducts.map((product) => (
-                <Col md={4} key={product.id} className="heading-container">
-                  <Card
-                    className="product-card"
-                    style={{
-                      border: "none",
-                      marginBottom: "20px",
-                      boxShadow: "none",
-                    }}
-                  >
-                    <div
-                      style={{
-                        display: "flex",
-                        alignItems: "center",
-                        marginLeft: "30px",
-                      }}
-                    >
-                      <div
-                        style={{
-                          height: "50px",
-                          fontSize: "17px",
-                          fontWeight: "bold",
-                          width: "50px",
-                          backgroundColor: "red",
-                          borderRadius: "50%",
-                          display: "flex",
-                          alignItems: "center",
-                          justifyContent: "center",
-                        }}
-                      >
-                        <span style={{ color: "white" }}>10%</span>
-                      </div>
-                      <span style={{ fontWeight: "bold" }}>Discount</span>
-                    </div>
-                    <Card.Img
-                      variant="top"
-                      src={product.images[0]}
-                      style={{ width: "300px" }}
-                    />
+        <Col className="mb-5">
+          <Products
+            products={filteredProducts}
+            setSelectedSize={setSelectedSize}
+            setSelectedProduct={setSelectedProduct}
+            handleAddToCart={handleAddToCart}
+            selectedSize={selectedSize}
+          />
+        </Col>
 
-                    <Card.Body>
-                      <div
-                        style={{
-                          display: "flex",
-                          justifyContent: "space-between",
-                          alignItems: "center",
-                        }}
-                      >
-                        <div style={{ marginLeft: "30px", fontSize: "20px" }}>
-                          <span
-                            style={{
-                              textDecoration: "line-through",
-                              marginRight: "10px",
-                            }}
-                          >
-                            ${product.price}
-                          </span>
-                          <span>${(product.price * 0.9).toFixed(2)}</span>
-
-                          <Form
-                            style={{
-                              width: "90px",
-                              marginTop: "10px",
-                              marginBottom: "10px",
-                            }}
-                          >
-                            <Form.Group controlId="formSize">
-                              <div style={{ position: "relative" }}>
-                                <Form.Control
-                                  as="select"
-                                  onChange={(e) =>
-                                    setSelectedSize(e.target.value)
-                                  }
-                                  style={{ paddingRight: "30px" }}
-                                >
-                                  <option value=""> Size</option>
-                                  {product.sizes.map((size) => (
-                                    <option value={size} key={size}>
-                                      {size}
-                                    </option>
-                                  ))}
-                                </Form.Control>
-                                <div
-                                  style={{
-                                    position: "absolute",
-                                    top: "50%",
-                                    right: "10px",
-                                    transform: "translateY(-50%)",
-                                  }}
-                                >
-                                  <FaChevronDown size={20} />
-                                </div>
-                              </div>
-                            </Form.Group>
-                          </Form>
-                        </div>
-                      </div>
-                      <Card.Title
-                        style={{ marginLeft: "20px", width: "195px" }}
-                      >
-                        {product.name}
-                      </Card.Title>
-                      <Button
-                        variant="primary"
-                        onClick={() => setSelectedProduct(product)}
-                      >
-                        View Details
-                      </Button>{" "}
-                      <Button
-                        variant="danger"
-                        onClick={() => handleAddToCart(product, selectedSize)}
-                        disabled={product.quantity >= 5} // maximum allowed quantity is 5
-                      >
-                        {product.quantity >= 5 ? "Out of Stock" : "Add to Cart"}
-                      </Button>
-                    </Card.Body>
-                  </Card>
-                </Col>
-              ))}
-            </Row>
-          </Col>
-
-          <Col md={4}>
-            <div style={{ display: "flex", justifyContent: "center" }}>
-              <h1
-                style={{
-                  textAlign: "center",
-                  fontSize: "36px",
-                  color: "#ff9900",
-                  fontWeight: "bold",
-                  fontFamily: "Arial, sans-serif",
-                  textShadow: "2px 2px 5px #333333",
-                  margin: "auto",
-                }}
-              >
-                Sales End's In
-              </h1>
-            </div>
-            <TimeComponent />
-            <h1
-              style={{ marginLeft: "170px", fontSize: "60px" }}
-              className="cart-title"
-            >
-              Cart
-            </h1>
-            <DressCart
-              handleClearCart={handleClearCart}
-              cartItems={cartItems}
-              handleRemoveFromCart={handleRemoveFromCart}
-              orderFormData={orderFormData}
-              setOrderFormData={setOrderFormData}
-              handleSubmitOrder={handleSubmitOrder}
-            />
-          </Col>
-        </Row>
+        <Col className="mb-5">
+          <AddToCart
+            handleClearCart={handleClearCart}
+            cartItems={cartItems}
+            handleRemoveFromCart={handleRemoveFromCart}
+            orderFormData={orderFormData}
+            setOrderFormData={setOrderFormData}
+            handleSubmitOrder={handleSubmitOrder}
+          />
+        </Col>
 
         <ProductModal
           selectedProduct={selectedProduct}
           onHide={() => setSelectedProduct(null)}
           handleAddToCart={handleAddToCart}
         />
-      </Container>
+      </div>
     </>
   );
 }
+
+const Wrapper = styled.main``;
 
 export default Dress;

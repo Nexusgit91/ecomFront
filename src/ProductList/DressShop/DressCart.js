@@ -71,8 +71,8 @@ function DressCart({ cartItems, handleRemoveFromCart, handleClearCart }) {
             <tr>
               <th>id</th>
               <th>Image</th>
-              <th>Name</th>
-              <th>Size</th>
+              <th className="d-none d-sm-inline-block">Name</th>
+              <th className="d-none d-sm-inline-block">Size</th>
               <th>Price</th>
               <th>Quantity</th>
               <th>Actions</th>
@@ -85,8 +85,8 @@ function DressCart({ cartItems, handleRemoveFromCart, handleClearCart }) {
                 <td>
                   <img src={item.images[0]} alt={item.name} height="50px" />
                 </td>
-                <td>{item.name}</td>
-                <td>{item.size}</td>
+                <td className="d-none d-sm-inline-block">{item.name}</td>
+                <td className="d-none d-sm-inline-block">{item.size}</td>
                 <td>${(item.price * 0.9).toFixed(2)}</td>
                 <td>{item.quantity}</td>
                 <td>
@@ -99,8 +99,8 @@ function DressCart({ cartItems, handleRemoveFromCart, handleClearCart }) {
                 </td>
               </tr>
             ))}
-            <tr>
-              <td colSpan={5}></td>
+            <tr className="f-je">
+
               <td>
                 <strong>Total:</strong>
               </td>
@@ -110,7 +110,7 @@ function DressCart({ cartItems, handleRemoveFromCart, handleClearCart }) {
         </Table>
 
         <h3>Order Form</h3>
-        <form onSubmit={handleSubmitOrder}>
+        <form className="form" onSubmit={handleSubmitOrder}>
           <div className="form-group">
             <label htmlFor="name">Name:</label>
             <input
@@ -157,7 +157,7 @@ function DressCart({ cartItems, handleRemoveFromCart, handleClearCart }) {
               readOnly
             />
           </div>
-          <Button type="submit" className="btn btn-primary">
+          <Button type="submit" className="btn btn-primary btn-block">
             Submit Order
           </Button>
         </form>

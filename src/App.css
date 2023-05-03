@@ -24,6 +24,8 @@ html {
   --primary-800: #0a6c74;
   --primary-900: #044e54;
 
+  --secondary-500: #dc3545;
+
   /* grey */
   --grey-50: #f0f4f8;
   --grey-100: #d9e2ec;
@@ -91,11 +93,130 @@ body {
   margin-top: -1rem;
 }
 
+.page {
+  min-height: calc(100vh - var(--nav-height));
+}
+
+.section-center {
+  width: 95vw;
+  margin: 0 auto;
+  max-width: var(--max-width);
+}
+
+.section {
+  padding: 6rem 0;
+}
+
 .full-page {
   min-height: 100vh;
 }
 
-
-.rohit {
-    
+h1,
+h2,
+h3,
+h4,
+h5 {
+  letter-spacing: var(--spacing);
+  text-transform: capitalize;
+  line-height: 1.25;
+  margin-bottom: 0.75rem;
+  font-weight: 500;
 }
+
+h1 {
+  font-size: 2.5rem;
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+h3 {
+  font-size: 1.5rem;
+}
+
+h4 {
+  font-size: 1.25rem;
+}
+
+h5 {
+  font-size: 0.875rem;
+}
+
+@media screen and (min-width: 800px) {
+  h1 {
+    font-size: 3rem;
+  }
+  h2 {
+    font-size: 2.5rem;
+  }
+  h3 {
+    font-size: 2rem;
+  }
+  h4 {
+    font-size: 1.35rem;
+  }
+  h5 {
+    font-size: 1rem;
+  }
+  body {
+    font-size: 1rem;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    line-height: 1;
+  }
+}
+
+.f-c {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.f-js {
+  justify-content: start;
+}
+
+.f-jc {
+  justify-content: center;
+}
+
+.f-je {
+  justify-content: end;
+}
+
+.f-jsb {
+  justify-content: space-between;
+}
+
+.f-as {
+  align-items: start;
+}
+
+.f-ac {
+  align-items: center;
+}
+
+.f-ae {
+  align-items: end;
+}
+
+.f-ab {
+  align-items: baseline;
+}
+
+.btn-block {
+  width: 100%;
+}
+
+.form {
+  max-width: var(--fixed-width);
+  width: 100%;
+  margin: 0 auto;
+  background: var(--white);
+}
+
+

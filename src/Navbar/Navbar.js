@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Navbar, Nav, NavDropdown } from "react-bootstrap";
-import { Link, useHistory } from "react-router-dom";
+import { NavLink, Link, useHistory } from "react-router-dom";
 import "./Navbar.css";
-import TypingAnimation from "../TypingAnimation/TypingAnimation";
-import { NavLink } from "react-router-dom/cjs/react-router-dom.min";
 import styled from "styled-components";
 
 function Navibar() {
@@ -64,7 +62,7 @@ function Navibar() {
             <font color="black">o</font>
           </h>
         </Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Toggle aria-controls="basic-navbar-nav" className="me-3"  />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ml-auto" style={{ fontWeight: "bold" }}>
             <NavLink className="nav-link" to="/">
@@ -142,6 +140,9 @@ const Wrapper = styled.div`
 
   .nav-link {
     position: relative;
+    display: inline-block;
+    font-weight: 400;
+    width: auto;
     &::before {
       content: "";
       display: inline-block;
@@ -162,6 +163,25 @@ const Wrapper = styled.div`
       &::before {
         background: var(--primary-500);
       }
+    }
+  }
+
+  .navbar-toggle {
+  }
+
+  .navbar-toggler:focus {
+    box-shadow: none;
+  }
+
+  @media screen and (max-width: 798px) {
+    .nav-toggle-icon {
+      height: 1rem;
+      width: 1rem;
+    }
+
+    .navbar-nav {
+      display: grid;
+      justify-content: center;
     }
   }
 `;

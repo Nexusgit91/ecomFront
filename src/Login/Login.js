@@ -54,7 +54,7 @@ function Login() {
     <div className="d-flex justify-content-center align-items-center">
       <Form
         onSubmit={handleSubmit}
-        className="border p-4 rounded"
+        className="form border p-4 rounded"
         style={{
           marginTop: "100px",
           width: "90%",
@@ -62,21 +62,18 @@ function Login() {
           border: "2px solid black",
         }}
       >
-        <h1 className="text-center mb-4">Login</h1>
-        <Form.Group>
-          <Form.Label className="d-flex align-items-center">
-            <FontAwesomeIcon icon={faEnvelope} className="me-2" />
-            Email:
-          </Form.Label>
+        <h3 className="text-center mb-5">Login</h3>
+
+        <Form.Group className="mb-3">
+          <Form.Label className="d-flex align-items-center">Email:</Form.Label>
           <Form.Control
             type="email"
             value={email}
             onChange={handleEmailChange}
           />
         </Form.Group>
-        <Form.Group>
+        <Form.Group className="mb-3">
           <Form.Label className="d-flex align-items-center">
-            <FontAwesomeIcon icon={faLock} className="me-2" />
             Password:
             <Button
               variant="link"
