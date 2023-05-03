@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Cabin&family=Roboto+Condensed:wght@400;700&display=swap");
 *,
 ::after,
 ::before {
@@ -5,12 +6,11 @@
 }
 
 /* fonts */
-@import url("https://fonts.googleapis.com/css2?family=Cabin&family=Roboto+Condensed:wght@400;700&display=swap");
-
 html {
   font-size: 100%;
-} /*16px*/
+}
 
+/*16px*/
 :root {
   /* colors */
   --primary-50: #e0fcff;
@@ -23,9 +23,7 @@ html {
   --primary-700: #0e7c86;
   --primary-800: #0a6c74;
   --primary-900: #044e54;
-
   --secondary-500: #dc3545;
-
   /* grey */
   --grey-50: #f0f4f8;
   --grey-100: #d9e2ec;
@@ -44,7 +42,6 @@ html {
   --red-dark: #842029;
   --green-light: #d1e7dd;
   --green-dark: #0f5132;
-
   /* fonts  */
   --headingFont: "Roboto Condensed", Sans-Serif;
   --bodyFont: "Cabin", Sans-Serif;
@@ -80,7 +77,6 @@ body {
 }
 
 /* title */
-
 .title {
   text-align: center;
 }
@@ -104,7 +100,7 @@ body {
 }
 
 .section {
-  padding: 6rem 0;
+  padding: 5rem 0;
 }
 
 .full-page {
@@ -217,11 +213,4 @@ h5 {
   width: 100%;
   margin: 0 auto;
   background: var(--white);
-}
-
-.form-control {
-  background: transparent;
-  &:focus{
-    
-  }
 }

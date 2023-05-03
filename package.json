@@ -24,6 +24,7 @@
     "moment": "^2.29.4",
     "mongoose": "^7.0.3",
     "multer": "^1.4.5-lts.1",
+    "node-sass": "^7.0.3",
     "npm": "^9.6.4",
     "react": "^18.2.0",
     "react-bootstrap": "^2.7.2",
@@ -42,7 +43,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "sass":"node-sass -w ./src/App.css ./src/App.scss"
   },
   "eslintConfig": {
     "extends": [

@@ -51,7 +51,7 @@ function Login() {
   };
 
   return (
-    <div className="d-flex justify-content-center align-items-center">
+    <main className="section d-flex justify-content-center align-items-center">
       <Form
         onSubmit={handleSubmit}
         className="form border p-4 rounded"
@@ -62,7 +62,7 @@ function Login() {
           border: "2px solid black",
         }}
       >
-        <h3 className="text-center mb-5">Login</h3>
+        <h3 className="text-center mb-4">Login</h3>
 
         <Form.Group className="mb-3">
           <Form.Label className="d-flex align-items-center">Email:</Form.Label>
@@ -99,7 +99,7 @@ function Login() {
           Forgot your password? <Link to="/forgot-password">Reset it here</Link>
         </p>
       </Form>
-    </div>
+    </main>
   );
 }
 
