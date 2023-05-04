@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Navbar, Nav, NavDropdown } from "react-bootstrap";
 import { NavLink, useNavigate } from "react-router-dom";
 import styled from "styled-components";
-
+import "./Nav.css";
 function Navibar() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [name, setName] = useState("");
@@ -49,12 +49,7 @@ function Navibar() {
     <Wrapper>
       <Navbar expand="md" className="mb-0">
         <NavLink className="navbar-brand" to="/">
-          {" "}
-          <h
-            style={{
-              marginLeft: "20px",
-            }}
-          >
+          <h style={{ marginLeft: "20px" }}>
             <font color="blue">N</font>
             <font color="green">e</font>
             <font color="red">x</font>
@@ -73,33 +68,31 @@ function Navibar() {
             <NavLink className="nav-link" to="/electronics">
               Electronics
             </NavLink>
-
             {name === "nexo 91" ? (
               <NavDropdown title="Admin" id="basic-nav-dropdown">
                 <NavDropdown.Item to="/orderList">Orders</NavDropdown.Item>
                 <NavDropdown.Item to="/register">Register</NavDropdown.Item>
                 <NavDropdown.Item to="/shopowner">
-                  RegisterShops
+                  Register Shops
                 </NavDropdown.Item>
                 <NavDropdown.Item to="/producttable">
-                  ProductTable
+                  Product Table
                 </NavDropdown.Item>
               </NavDropdown>
             ) : (
               ""
             )}
-
-            {name ? (
-              <NavLink className="nav-link" to="/profile">
-                Your Orders
-              </NavLink>
-            ) : (
-              ""
-            )}
             {isLoggedIn ? (
               <>
-                <NavLink>Hello, {name}</NavLink>
-                <NavLink onClick={handleLogout}>Logout</NavLink>
+                <NavLink className="nav-link" to="/profile">
+                  Your Orders
+                </NavLink>
+                <NavLink onClick={handleLogout} className="nav-link">
+                  Logout
+                </NavLink>
+                <NavLink className="nav-link" to="#">
+                  Hello, {name}
+                </NavLink>
               </>
             ) : (
               <>
@@ -113,7 +106,6 @@ function Navibar() {
             )}
           </Nav>
         </Navbar.Collapse>
-        {/* <TypingAnimation /> */}
         <h
           className="market d-none d-md-block"
           style={{
@@ -131,90 +123,26 @@ function Navibar() {
 }
 
 const Wrapper = styled.div`
-.navbar {
-  background-color: #ffffff;
-  border-bottom: 1px solid #e5e5e5;
-  border-radius: 0;
-  margin-bottom: 30px;
-  padding: 20px 0;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.navbar-brand {
-  color: #555;
-  font-size: 1.8rem;
-  font-weight: bold;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  padding: 0;
-}
-
-.navbar-collapse{
-  justify-content: center;
-}
-
-.navbar-nav {
-  margin: 0;
-  padding: 0;
-}
-
-.nav-link {
-  color: #555;
-  font-size: 1.25rem;
-  font-weight: 500;
-  padding: 10px 15px;
-  margin: 0 10px;
-  border-radius: 2px;
-  transition: all 0.2s ease-in-out;
-  
-}
-
-.nav-link:hover,
-.nav-link:focus {
-  /* background-color: #bfb2de; */
-
-  color: var(#bfb2de);
-
-
-
-}
-
-.navbar-toggler {
-  border-color: transparent;
-}
-
-.navbar-toggler-icon {
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(0, 0, 0, 0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
-}
-
-.dropdown-menu {
-  border-radius: 0;
-}
-
-.dropdown-item {
-  font-size: 16px;
-  font-weight: 500;
-  color: #555;
-  padding: 8px 15px;
-  margin: 0;
-  transition: all 0.2s ease-in-out;
-}
-
-.dropdown-item:hover,
-.dropdown-item:focus {
-  color: #ffffff;
-  background-color: #555;
-}
-
-.dropdown-divider {
-  margin: 0;
-}
-
-@media (max-width: 767px) {
-  .navbar-collapse {
+  .navbar {
     background-color: #ffffff;
+    border-bottom: 1px solid #e5e5e5;
+    border-radius: 0;
+    margin-bottom: 30px;
+    padding: 20px 0;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    padding: 15px 0;
+  }
+
+  .navbar-brand {
+    color: #555;
+    font-size: 1.8rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    padding: 0;
+  }
+
+  .navbar-collapse {
+    justify-content: center;
   }
 
   .navbar-nav {
@@ -223,71 +151,130 @@ const Wrapper = styled.div`
   }
 
   .nav-link {
-    display: block;
-    margin: 0;
-    border-radius: 0;
-    text-align: center;
+    color: #555;
+    font-size: 1.25rem;
+    font-weight: 500;
+    padding: 10px 15px;
+    margin: 0 10px;
+    border-radius: 2px;
     transition: all 0.2s ease-in-out;
   }
 
   .nav-link:hover,
   .nav-link:focus {
+    /* background-color: #bfb2de; */
+
+    color: var(#bfb2de);
+  }
+
+  .navbar-toggler {
+    border-color: transparent;
+  }
+
+  .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(0, 0, 0, 0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+  }
+
+  .dropdown-menu {
+    border-radius: 0;
+  }
+
+  .dropdown-item {
+    font-size: 16px;
+    font-weight: 500;
     color: #555;
-    background-color: #ffffff;
+    padding: 8px 15px;
+    margin: 0;
+    transition: all 0.2s ease-in-out;
   }
-}
 
-/* CSS */
-.navbar {
-  height: 80px;
-  background-color: transparent;
-  transition: background-color 0.5s ease-in-out;
-}
-
-.navbar:hover {
-  background-color: rgba(255, 255, 255, 0.9);
-}
-
-.navbar-brand {
-  font-size: 30px;
-  font-weight: bold;
-  color: #333;
-  transition: color 0.5s ease-in-out;
-}
-
-.navbar-brand:hover {
-  color: #007bff;
-}
-
-.navbar-nav .nav-link {
-  font-size: 19px;
-  color: #392929;
-  transition: color 0.5s ease-in-out;
-}
-
-.navbar-nav .nav-link:hover {
-  /* color: #007bff; */
-  /* animation: shake 0.5s; */
-}
-
-@keyframes shake {
-  0% {
-    transform: translateX(0);
+  .dropdown-item:hover,
+  .dropdown-item:focus {
+    color: #ffffff;
+    background-color: #555;
   }
-  25% {
-    transform: translateX(5px);
-  }
-  50% {
-    transform: translateX(-5px);
-  }
-  75% {
-    transform: translateX(5px);
-  }
-  100% {
-    transform: translateX(0);
-  }
-}
 
+  .dropdown-divider {
+    margin: 0;
+  }
+
+  @media (max-width: 767px) {
+    .navbar-collapse {
+      background-color: #ffffff;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      padding: 15px 0;
+    }
+
+    .navbar-nav {
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav-link {
+      display: block;
+      margin: 0;
+      border-radius: 0;
+      text-align: center;
+      transition: all 0.2s ease-in-out;
+    }
+
+    .nav-link:hover,
+    .nav-link:focus {
+      color: #555;
+      background-color: #ffffff;
+    }
+  }
+
+  /* CSS */
+  .navbar {
+    height: 80px;
+    background-color: transparent;
+    transition: background-color 0.5s ease-in-out;
+  }
+
+  .navbar:hover {
+    background-color: rgba(255, 255, 255, 0.9);
+  }
+
+  .navbar-brand {
+    font-size: 30px;
+    font-weight: bold;
+    color: #333;
+    transition: color 0.5s ease-in-out;
+  }
+
+  .navbar-brand:hover {
+    color: #007bff;
+  }
+
+  .navbar-nav .nav-link {
+    font-size: 19px;
+    color: #392929;
+    transition: color 0.5s ease-in-out;
+  }
+
+  .navbar-nav .nav-link:hover {
+    /* color: #007bff; */
+    /* animation: shake 0.5s; */
+  }
+
+  @keyframes shake {
+    0% {
+      transform: translateX(0);
+    }
+    25% {
+      transform: translateX(5px);
+    }
+    50% {
+      transform: translateX(-5px);
+    }
+    75% {
+      transform: translateX(5px);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
 
   .navbar {
     height: var(--nav-height);

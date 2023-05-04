@@ -15,6 +15,37 @@ export const dressProducts = [
     ],
   },
   {
+    id: 1,
+    name: "Suit",
+    description:
+      "This dress shirt is made from high-quality materials and is designed to be both comfortable and stylish.",
+    price: 9.99,
+    quantity: 2,
+    sizes: ["S", "M", "L", "XL"],
+    paymentMethod: "Credit Card",
+    images: [
+      require("../img/suit.jpg"),
+      require("../img/suit2.jpg"),
+      require("../img/suit3.jpg"),
+    ],
+  },
+  {
+    id: 1,
+    name: "Suit",
+    description:
+      "This dress shirt is made from high-quality materials and is designed to be both comfortable and stylish.",
+    price: 9.99,
+    quantity: 2,
+    sizes: ["S", "M", "L", "XL"],
+    paymentMethod: "Credit Card",
+    images: [
+      require("../img/suit.jpg"),
+      require("../img/suit2.jpg"),
+      require("../img/suit3.jpg"),
+    ],
+  },
+
+  {
     id: 2,
     name: "Dress Shirt",
     description:

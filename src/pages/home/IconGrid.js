@@ -14,69 +14,48 @@ const IconGrid = () => {
     setHovered(null);
   };
 
-  const iconStyle = {
-    fontSize: "3rem",
-    transition: "transform 0.2s ease-in-out",
-  };
-
-  const iconHoveredStyle = {
-    transform: "scale(1.2)",
-  };
-
   return (
     <Wrapper className="mt-5 container">
       <Row className="justify-content-center gy-2">
         <Col xs={6} md={3} className="text-center ">
-          <FaTruck
-            className="mb-3 icon"
-            style={
-              hovered === "delivery"
-                ? { ...iconStyle, ...iconHoveredStyle }
-                : iconStyle
-            }
-            onMouseEnter={() => handleMouseEnter("delivery")}
-            onMouseLeave={() => handleMouseLeave()}
+          <Icon
+            hovered={hovered}
+            iconName="delivery"
+            icon={<FaTruck size={80} />}
+            text="Free & Fast Delivery"
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
           />
-          <h4> Free & Fast Delivery</h4>
         </Col>
         <Col xs={6} md={3} className="text-center ">
-          <FaCreditCard
-            className="mb-3 icon"
-            style={
-              hovered === "payment"
-                ? { ...iconStyle, ...iconHoveredStyle }
-                : iconStyle
-            }
-            onMouseEnter={() => handleMouseEnter("payment")}
-            onMouseLeave={() => handleMouseLeave()}
+          <Icon
+            hovered={hovered}
+            iconName="payment"
+            icon={<FaCreditCard size={80} />}
+            text="Online Payment"
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
           />
-          <h4>Online Payment</h4>
         </Col>
         <Col xs={6} md={3} className="text-center ">
-          <FaShieldAlt
-            className="mb-3 icon"
-            style={
-              hovered === "security"
-                ? { ...iconStyle, ...iconHoveredStyle }
-                : iconStyle
-            }
-            onMouseEnter={() => handleMouseEnter("security")}
-            onMouseLeave={() => handleMouseLeave()}
+          <Icon
+            hovered={hovered}
+            iconName="security"
+            icon={<FaShieldAlt size={80} />}
+            text="Secured Transaction"
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
           />
-          <h4>Secured Transaction</h4>
         </Col>
         <Col xs={6} md={3} className="text-center ">
-          <FaGift
-            className="mb-3 icon"
-            style={
-              hovered === "offers"
-                ? { ...iconStyle, ...iconHoveredStyle }
-                : iconStyle
-            }
-            onMouseEnter={() => handleMouseEnter("offers")}
-            onMouseLeave={() => handleMouseLeave()}
+          <Icon
+            hovered={hovered}
+            iconName="offers"
+            icon={<FaGift size={80} />}
+            text="Daily Offers"
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
           />
-          <h4>Daily Offers</h4>
         </Col>
       </Row>
     </Wrapper>
@@ -84,10 +63,6 @@ const IconGrid = () => {
 };
 
 const Wrapper = styled.section`
-  .icon {
-    font-size: 2.4rem !important;
-  }
-
   @media screen and (max-width: 798px) {
     .icon {
       font-size: 2.1rem !important;
@@ -97,10 +72,62 @@ const Wrapper = styled.section`
       font-size: 1.1rem;
     }
   }
+`;
+
+const IconWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+
+  ${(props) =>
+    props.hovered === props.iconName &&
+    `
+      transform: scale(1.2);
+    `}
+
+  svg {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+
+  @media screen and (max-width: 798px) {
+    svg {
+      font-size: 2.4rem;
+    }
+
+    h4 {
+      font-size: 1.1rem;
+    }
+  }
+
   @media screen and (max-width: 500px) {
-    .icon {
+    svg {
+      font-size: 2rem;
     }
   }
 `;
+
+const Icon = ({
+  hovered,
+  iconName,
+  icon,
+  text,
+  onMouseEnter,
+  onMouseLeave,
+}) => {
+  return (
+    <IconWrapper
+      hovered={hovered}
+      iconName={iconName}
+      onMouseEnter={() => onMouseEnter(iconName)}
+      onMouseLeave={onMouseLeave}
+    >
+      {icon}
+      <h4>{text}</h4>
+    </IconWrapper>
+  );
+};
 
 export default IconGrid;

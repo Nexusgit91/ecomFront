@@ -2,9 +2,53 @@ import { useState } from "react";
 import { Container, Table, Button } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
 import { OrderForm } from "./OrderForm";
+import styled from "styled-components";
+
+const CartContainer = styled(Container)`
+  margin-bottom: 20px;
+`;
+
+const CartTable = styled(Table)`
+  margin-top: 30px;
+
+  th {
+    background-color: #f8f9fa;
+    border: none;
+    font-weight: 500;
+  }
+
+  tbody tr:nth-child(odd) {
+    background-color: #f8f9fa;
+  }
+
+  tbody tr:hover {
+    background-color: #f1f1f1;
+  }
+`;
+
+const CartButton = styled(Button)`
+  background-color: #dc3545;
+  border: none;
+
+  &:hover {
+    background-color: #c82333;
+  }
+`;
+
+const NoticeContainer = styled.div`
+  margin-top: 30px;
+  font-style: italic;
+  color: black;
+  font-size: 16px;
+  background-color: yellow;
+  border-radius: 10px;
+  width: 100%;
+  padding: 20px;
+`;
 
 function DressCart({ cartItems, handleRemoveFromCart, handleClearCart }) {
   const userEmail = window.sessionStorage.getItem("email");
+
   const [orderFormData, setOrderFormData] = useState({
     name: "",
     email: userEmail,
@@ -19,6 +63,7 @@ function DressCart({ cartItems, handleRemoveFromCart, handleClearCart }) {
 
   const handleSubmitOrder = async (e) => {
     e.preventDefault();
+
     if (!userEmail) {
       const modal = document.createElement("div");
       modal.style =
@@ -36,20 +81,24 @@ function DressCart({ cartItems, handleRemoveFromCart, handleClearCart }) {
     }
 
     const orderData = { ...orderFormData, cartItems };
+
     try {
       const response = await fetch("/api/orders", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(orderData),
       });
+
       if (response.ok) {
         // Order submitted successfully
         console.log("Order submitted successfully");
+
         // Clear cart and order form data
         setOrderFormData({ name: "", email: "", address: "" });
 
         // Clear cart items
         handleClearCart();
+
         // Store the total price in a session cookie
         window.sessionStorage.setItem("totalPrice", totalPrice.toFixed(2));
       }
@@ -57,10 +106,7 @@ function DressCart({ cartItems, handleRemoveFromCart, handleClearCart }) {
       console.error(err);
     }
   };
-  
-  
-  
-  
+
   const totalPrice = cartItems.reduce(
     (total, item) => total + item.price * item.quantity * 0.9,
     0
@@ -68,14 +114,14 @@ function DressCart({ cartItems, handleRemoveFromCart, handleClearCart }) {
 
   return (
     <>
-      <Container style={{ marginBottom: "20px" }}>
-        <Table className="my-5">
+      <CartContainer>
+        <CartTable hover responsive>
           <thead>
             <tr>
-              <th>id</th>
+              <th>Id</th>
               <th>Image</th>
-              <th className="d-none d-sm-inline-block">Name</th>
-              <th className="d-none d-sm-inline-block">Size</th>
+              <th className="d-none d-sm-table-cell">Name</th>
+              <th className="d-none d-sm-table-cell">Size</th>
               <th>Price</th>
               <th>Quantity</th>
               <th>Actions</th>
@@ -83,33 +129,33 @@ function DressCart({ cartItems, handleRemoveFromCart, handleClearCart }) {
           </thead>
           <tbody>
             {cartItems.map((item, index) => (
-              <tr key={item.id} className="heading-container">
+              <tr key={item.id}>
                 <td>{index + 1}</td>
                 <td>
                   <img src={item.images[0]} alt={item.name} height="50px" />
                 </td>
-                <td className="d-none d-sm-inline-block">{item.name}</td>
-                <td className="d-none d-sm-inline-block">{item.size}</td>
+                <td className="d-none d-sm-table-cell">{item.name}</td>
+                <td className="d-none d-sm-table-cell">{item.size}</td>
                 <td>${(item.price * 0.9).toFixed(2)}</td>
                 <td>{item.quantity}</td>
                 <td>
-                  <Button
+                  <CartButton
                     variant="danger"
                     onClick={() => handleRemoveFromCart(item)}
                   >
                     Remove
-                  </Button>
+                  </CartButton>
                 </td>
               </tr>
             ))}
-            <tr className="f-je">
-              <td>
+            <tr>
+              <td colSpan={4}>
                 <strong>Total:</strong>
               </td>
-              <td>${totalPrice.toFixed(2)}</td>
+              <td colSpan={3}>${totalPrice.toFixed(2)}</td>
             </tr>
           </tbody>
-        </Table>
+        </CartTable>
 
         <OrderForm
           handleSubmitOrder={handleSubmitOrder}
@@ -117,26 +163,26 @@ function DressCart({ cartItems, handleRemoveFromCart, handleClearCart }) {
           orderFormData={orderFormData}
           totalPrice={totalPrice}
         />
-      </Container>
+      </CartContainer>
 
-      <h
-        style={{
-          fontStyle: "italic",
-          color: "black",
-          fontSize: "16px",
-          backgroundColor: "yellow",
-          borderRadius: "10px",
-          width: "400px",
-        }}
-      >
-        <h5> *Require login to submit the order</h5>
-        <h5> *Only cash on delivery </h5>
-        <h5> *Orderd will be delivered within 48 hours</h5>
-        <br></br>* Notice the name of the product contain <b> s_id</b> it stands
-        for
-        <b> shop_id </b> it realted to the shop owners not to the customers so
-        ignore it.
-      </h>
+      <NoticeContainer>
+        <p>
+          <strong>Notice:</strong> The name of the product contains <b>s_id</b>,
+          which stands for <b>shop_id</b>. It is related to the shop owners and
+          not to the customers, so please ignore it.
+        </p>
+        <p>
+          <strong>Require login:</strong> You need to be logged in to submit the
+          order.
+        </p>
+        <p>
+          <strong>Payment:</strong> Only cash on delivery is accepted.
+        </p>
+        <p>
+          <strong>Delivery:</strong> Ordered items will be delivered within 48
+          hours.
+        </p>
+      </NoticeContainer>
     </>
   );
 }

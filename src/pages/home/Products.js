@@ -6,6 +6,22 @@ import "slick-carousel/slick/slick-theme.css";
 import { FaChevronDown } from "react-icons/fa";
 import styled from "styled-components";
 
+const ProductCard = styled(Card)`
+  border: none;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease-in-out;
+  background-color: white;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+`;
+
+const ProductImage = styled(Card.Img)`
+  height: 100%;
+  object-fit: cover;
+`;
+
 const Products = ({
   products,
   setSelectedSize,
@@ -18,12 +34,12 @@ const Products = ({
       <Row sm={1} md={2} lg={3} className="products gy-4 f-c">
         {products.map((product) => (
           <div key={product.id}>
-            <Card className="card border-0 shadow-sm px-3 pt-2 p3-4">
+            <ProductCard className="card border-0 shadow-sm px-3 pt-2 p3-4">
               <div className="discount f-c flex-column">
                 <div className="discount-value ">10%</div>
                 <span className="discount-off">OFF</span>
               </div>
-              <Card.Img variant="top" src={product.images[0]} />
+              <ProductImage variant="top" src={product.images[0]} />
 
               <Card.Body>
                 <div>
@@ -74,7 +90,7 @@ const Products = ({
                   </Button>
                 </div>
               </Card.Body>
-            </Card>
+            </ProductCard>
           </div>
         ))}
       </Row>

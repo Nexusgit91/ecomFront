@@ -43,20 +43,31 @@ function TimeComponent() {
   return (
     <div
       className="time-component mx-auto"
-      style={{ height: "70px",  }}
+      style={{
+        height: "120px",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
     >
-      <div className="countdown">
+      <div className="countdown" style={{ fontSize: "40px" }}>
         <div className="countdown-item">
           <span id="hours">{timeLeft.hours}</span>
-          <div className="countdown-label">hrs</div>
+          <div className="countdown-label" style={{ fontSize: "30px" }}>
+            hrs
+          </div>
         </div>
         <div className="countdown-item">
           <span id="minutes">{timeLeft.minutes}</span>
-          <div className="countdown-label">mins</div>
+          <div className="countdown-label" style={{ fontSize: "30px" }}>
+            mins
+          </div>
         </div>
         <div className="countdown-item">
           <span id="seconds">{timeLeft.seconds}</span>
-          <div className="countdown-label">sec</div>
+          <div className="countdown-label" style={{ fontSize: "30px" }}>
+            sec
+          </div>
         </div>
       </div>
     </div>
