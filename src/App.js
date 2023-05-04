@@ -32,6 +32,8 @@ function App() {
 
             <Route path="/signup" element={<SignUp />} />
             <Route path="/login" element={<Login />} />
+
+            <Route path="*" element={<NotFound />} />
           </Route>
 
           {/* <Route exact path="/electronics" component={Electronics} />
