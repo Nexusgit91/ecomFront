@@ -1,11 +1,10 @@
 import { useState } from "react";
 import { Container, Table, Button } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
-import "./Css/Cart.css";
-import IconGrid from "../components/IconGrid";
-import "./ProductList.css";
-function Cart({ cartItems, handleRemoveFromCart, handleClearCart }) {
-  const history = useHistory();
+import "../Css/Cart.css";
+
+import "../ProductList.css";
+function DressCart({ cartItems, handleRemoveFromCart, handleClearCart }) {
   const userEmail = window.sessionStorage.getItem("email");
   const [orderFormData, setOrderFormData] = useState({
     name: "",
@@ -49,21 +48,21 @@ function Cart({ cartItems, handleRemoveFromCart, handleClearCart }) {
         console.log("Order submitted successfully");
         // Clear cart and order form data
         setOrderFormData({ name: "", email: "", address: "" });
-        // You may also want to update the cart items in the parent component
+
         // Clear cart items
         handleClearCart();
         // Store the total price in a session cookie
         window.sessionStorage.setItem("totalPrice", totalPrice.toFixed(2));
-        window.location.replace("/pay");
       }
     } catch (err) {
       console.error(err);
     }
   };
   const totalPrice = cartItems.reduce(
-    (total, item) => total + item.price * item.quantity,
+    (total, item) => total + item.price * item.quantity * 0.9,
     0
   );
+
   return (
     <>
       <Container style={{ marginBottom: "20px" }}>
@@ -72,7 +71,8 @@ function Cart({ cartItems, handleRemoveFromCart, handleClearCart }) {
             <tr>
               <th>id</th>
               <th>Image</th>
-              <th>Name</th>
+              <th className="d-none d-sm-inline-block">Name</th>
+              <th className="d-none d-sm-inline-block">Size</th>
               <th>Price</th>
               <th>Quantity</th>
               <th>Actions</th>
@@ -83,10 +83,11 @@ function Cart({ cartItems, handleRemoveFromCart, handleClearCart }) {
               <tr key={item.id} className="heading-container">
                 <td>{index + 1}</td>
                 <td>
-                  <img src={item.imgSrc} alt={item.name} height="50px" />
+                  <img src={item.images[0]} alt={item.name} height="50px" />
                 </td>
-                <td>{item.name}</td>
-                <td>${item.price.toFixed(2)}</td>
+                <td className="d-none d-sm-inline-block">{item.name}</td>
+                <td className="d-none d-sm-inline-block">{item.size}</td>
+                <td>${(item.price * 0.9).toFixed(2)}</td>
                 <td>{item.quantity}</td>
                 <td>
                   <Button
@@ -98,8 +99,8 @@ function Cart({ cartItems, handleRemoveFromCart, handleClearCart }) {
                 </td>
               </tr>
             ))}
-            <tr>
-              <td colSpan={4}></td>
+            <tr className="f-je">
+
               <td>
                 <strong>Total:</strong>
               </td>
@@ -107,8 +108,9 @@ function Cart({ cartItems, handleRemoveFromCart, handleClearCart }) {
             </tr>
           </tbody>
         </Table>
+
         <h3>Order Form</h3>
-        <form onSubmit={handleSubmitOrder}>
+        <form className="form" onSubmit={handleSubmitOrder}>
           <div className="form-group">
             <label htmlFor="name">Name:</label>
             <input
@@ -143,17 +145,19 @@ function Cart({ cartItems, handleRemoveFromCart, handleClearCart }) {
             />
           </div>
           <div className="form-group">
-            <label htmlFor="totalCost">Total Cost:</label>
+            <label htmlFor="totalCost">
+              Total Cost :Rs{totalPrice.toFixed(2)}+ 0 delivery charges
+            </label>
             <input
               className="form-control"
               type="text"
               id="totalCost"
               name="totalCost"
-              value={totalPrice}
+              value={totalPrice.toFixed(2)}
               readOnly
             />
           </div>
-          <Button type="submit" className="btn btn-primary">
+          <Button type="submit" className="btn btn-primary btn-block">
             Submit Order
           </Button>
         </form>
@@ -169,8 +173,9 @@ function Cart({ cartItems, handleRemoveFromCart, handleClearCart }) {
           width: "400px",
         }}
       >
-        <h4> *Require login to submit the order</h4>
-        <h4> *Orderd will be delivered within 48 hours</h4>
+        <h5> *Require login to submit the order</h5>
+        <h5> *Only cash on delivery </h5>
+        <h5> *Orderd will be delivered within 48 hours</h5>
         <br></br>* Notice the name of the product contain <b> s_id</b> it stands
         for
         <b> shop_id </b> it realted to the shop owners not to the customers so
@@ -180,4 +185,4 @@ function Cart({ cartItems, handleRemoveFromCart, handleClearCart }) {
   );
 }
 
-export default Cart;
+export default DressCart;

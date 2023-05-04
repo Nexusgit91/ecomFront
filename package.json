@@ -44,7 +44,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "sass":"node-sass -w ./src/App.css ./src/App.scss"
+    "sass":"node-sass -w ./src/App.scss ./src/App.css"
   },
   "eslintConfig": {
     "extends": [

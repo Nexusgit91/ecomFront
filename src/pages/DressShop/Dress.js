@@ -17,14 +17,14 @@ import {
   Image,
 } from "react-bootstrap";
 
-import { dressProducts } from "../Datajson/dressProducts";
+import { dressProducts } from "../../ProductList/Datajson/dressProducts";
 import Products from "./Products";
 
-import VideoBanner from "../../VideoBanner/VideoBanner";
-import IconGrid from "../../IconGrid/IconGrid";
+import VideoBanner from "../../components/VideoBanner";
+import IconGrid from "../../components/IconGrid";
 
 import DressCart from "./DressCart";
-import TimeComponent from "../Timer/TimeComponet";
+import TimeComponent from "../../ProductList/Timer/TimeComponet";
 import ProductModal from "./ProductModal";
 import styled from "styled-components";
 //Component

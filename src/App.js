@@ -1,25 +1,25 @@
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-import OrderList from "./OrderList/OrderList";
-import Dress from "./ProductList/DressShop/Dress";
+import OrderList from "./pages/Order/OrderList";
+import Dress from "./pages/DressShop/Dress";
 import Books from "./ProductList/BookShop/Books";
-import Navibar from "./Navbar/Navbar";
-import TypingAnimation from "./TypingAnimation/TypingAnimation";
+import Navibar from "./layouts/Navbar";
+import TypingAnimation from "./components/TypingAnimation";
 
 import PaymentForm from "./ProductList/PaymentForm";
-import Ordername from "./OrderList/Ordername";
-import SignUp from "./Singup/SignUp";
-import Login from "./Login/Login";
+import Ordername from "./pages/Order/Ordername";
+import SignUp from "./pages/Signup/SignUp";
+import Login from "./pages/Login/Login";
 import Profile from "./Profile/Profile";
-import Register from "./RegisterShops/Register";
-import ShopOwners from "./RegisterShops/ShopOwners";
+import Register from "./pages/RegisterShops/Register";
+import ShopOwners from "./pages/RegisterShops/ShopOwners";
 import ProductTable from "./ProductTable/ProductTable";
 import Electronics from "./ProductList/ElectronicShop/Electronics";
-import NotFound from "./404/NotFound";
-import DressForm from "./Dress/DressForm";
+import NotFound from "./pages/404/NotFound";
+import DressForm from "./components/DressForm";
 import QuantityForm from "./ProductList/Datajson/QuantityDress";
-import ForgotPassword from "./Login/Forgot/ForgotPassword";
-import ResetPassword from "./Login/Rest/ResetPassword";
+import ForgotPassword from "./pages/Login/Forgot/ForgotPassword";
+import ResetPassword from "./pages/Login/Rest/ResetPassword";
 
 function App() {
   return (

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Ordername from "../OrderList/Ordername";
+import Ordername from "../pages/OrderList/Ordername";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 

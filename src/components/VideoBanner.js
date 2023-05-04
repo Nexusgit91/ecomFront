@@ -16,8 +16,34 @@ const VideoBanner = (props) => {
 };
 
 const Wrapper = styled.section`
+  .video-banner {
+    height: 80vh;
+    background-color: black;
+  }
+
+  .video-banner video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  @media (max-width: 768px) {
+    .video-banner {
+      height: 60vh;
+      background-color: black;
+      padding-bottom: 0%;
+    }
+
+    .video-banner video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
   @media only screen and (max-width: 500px) {
-    .video-banner,video {
+    .video-banner,
+    video {
       width: 100vw;
     }
   }

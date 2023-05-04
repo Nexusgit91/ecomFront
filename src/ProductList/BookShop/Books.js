@@ -17,15 +17,18 @@ import {
 
 import { bookProducts } from "../Datajson/bookProduct";
 import Cart from "../Cart";
-import TypingAnimation from "../../TypingAnimation/TypingAnimation";
-import VideoBanner from "../../VideoBanner/VideoBanner";
-import IconGrid from "../../IconGrid/IconGrid";
+import TypingAnimation from "../../components/TypingAnimation";
+import VideoBanner from "../../components/VideoBanner";
+import IconGrid from "../../components/IconGrid";
 import BookCart from "./BookCart";
+
+import Products from "../../pages/DressShop/Products";
 
 function Books() {
   const products = bookProducts;
   // State for selected product and cart items
   const [selectedProduct, setSelectedProduct] = useState(null);
+  const [selectedSize, setSelectedSize] = useState(null);
   const [cartItems, setCartItems] = useState([]);
   // State for search query
   const [searchQuery, setSearchQuery] = useState("");
@@ -143,78 +146,13 @@ function Books() {
         <Row>
           <Col md={8}>
             <Row>
-              {filteredProducts.map((product) => (
-                <Col md={4} key={product.id} className="heading-container">
-                  <Card
-                    className="product-card"
-                    style={{
-                      border: "none",
-                      marginBottom: "20px",
-                      boxShadow: "none",
-                    }}
-                  >
-                    <div
-                      style={{
-                        display: "flex",
-                        alignItems: "center",
-                        marginLeft: "30px",
-                      }}
-                    >
-                      <div
-                        style={{
-                          height: "50px",
-                          fontSize: "17px",
-                          fontWeight: "bold",
-                          width: "50px",
-                          backgroundColor: "red",
-                          borderRadius: "50%",
-                          display: "flex",
-                          alignItems: "center",
-                          justifyContent: "center",
-                        }}
-                      >
-                        <span style={{ color: "white" }}>10%</span>
-                      </div>
-                      <span style={{ fontWeight: "bold" }}>Discount</span>
-                    </div>
-                    <Card.Img
-                      variant="top"
-                      src={product.images[0]}
-                      style={{ width: "250px", height: "350px" }}
-                    />
-                    <Card.Body>
-                      <Card.Title style={{ marginLeft: "70px" }}>
-                        <span
-                          style={{
-                            textDecoration: "line-through",
-                            marginRight: "10px",
-                          }}
-                        >
-                          ${product.price}
-                        </span>
-                        <span>${(product.price * 0.9).toFixed(2)}</span>
-                      </Card.Title>
-                      <Card.Title
-                        style={{ marginLeft: "20px", width: "195px" }}
-                      >
-                        {product.name}
-                      </Card.Title>
-                      <Button
-                        variant="primary"
-                        onClick={() => setSelectedProduct(product)}
-                      >
-                        View Details
-                      </Button>{" "}
-                      <Button
-                        variant="danger"
-                        onClick={() => handleAddToCart(product)}
-                      >
-                        Add to Cart
-                      </Button>
-                    </Card.Body>
-                  </Card>
-                </Col>
-              ))}
+              <Products
+                products={filteredProducts}
+                setSelectedSize={setSelectedProduct}
+                setSelectedProduct={setSelectedProduct}
+                handleAddToCart={handleAddToCart}
+                selectedSize={selectedSize}
+              />
             </Row>
           </Col>
 

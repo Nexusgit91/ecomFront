@@ -1,5 +1,5 @@
 import React from "react";
-import TimeComponent from "../Timer/TimeComponet";
+import TimeComponent from "../../ProductList/Timer/TimeComponet";
 import DressCart from "./DressCart";
 
 export function AddToCart({

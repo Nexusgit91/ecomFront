@@ -1,4 +1,5 @@
 import { useState } from "react";
+
 import { Form, Button } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -7,12 +8,14 @@ import {
   faEye,
   faEyeSlash,
 } from "@fortawesome/free-solid-svg-icons";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+
+  const Navigate = useHistory();
 
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
@@ -47,7 +50,7 @@ function Login() {
   };
 
   const signUpHandler = () => {
-    window.location.replace("/signup");
+   Navigate("/signup");
   };
 
   return (

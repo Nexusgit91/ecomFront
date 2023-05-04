@@ -1,5 +1,5 @@
 //Reducer file: dressReducer.js
-import { dressProducts } from "../Datajson/dressProducts";
+import { dressProducts } from "../../ProductList/Datajson/dressProducts";
 
 export const dressInitialState = {
   products: dressProducts,
