@@ -183,5 +183,9 @@ h5 {
   box-shadow: var(--shadow-1);
   padding: 2rem 3rem;
   padding-bottom: 2.4rem; }
-  .form h1 {
-    margin-bottom: 2.5rem; }
+  .form h3 {
+    margin-bottom: 2rem; }
+  .form .form-group {
+    margin-bottom: 1.5rem; }
+  .form button[type="submit"] {
+    margin-top: 2rem; }

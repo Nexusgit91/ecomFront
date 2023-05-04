@@ -6,7 +6,7 @@ import styled from "styled-components";
 function Navibar() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [name, setName] = useState("");
-  const history = useNavigate();
+  const Navigate = useNavigate();
 
   useEffect(() => {
     const checkLoggedIn = async () => {
@@ -142,7 +142,7 @@ const Wrapper = styled.div`
 
 .navbar-brand {
   color: #555;
-  font-size: 20px;
+  font-size: 1.8rem;
   font-weight: bold;
   text-transform: uppercase;
   letter-spacing: 2px;
@@ -160,7 +160,7 @@ const Wrapper = styled.div`
 
 .nav-link {
   color: #555;
-  font-size: 16px;
+  font-size: 1.25rem;
   font-weight: 500;
   padding: 10px 15px;
   margin: 0 10px;

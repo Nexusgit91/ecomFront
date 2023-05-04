@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Container, Table, Button } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
+import { OrderForm } from "./OrderForm";
 
 function DressCart({ cartItems, handleRemoveFromCart, handleClearCart }) {
   const userEmail = window.sessionStorage.getItem("email");
@@ -56,6 +57,10 @@ function DressCart({ cartItems, handleRemoveFromCart, handleClearCart }) {
       console.error(err);
     }
   };
+  
+  
+  
+  
   const totalPrice = cartItems.reduce(
     (total, item) => total + item.price * item.quantity * 0.9,
     0
@@ -106,58 +111,12 @@ function DressCart({ cartItems, handleRemoveFromCart, handleClearCart }) {
           </tbody>
         </Table>
 
-        <h3>Order Form</h3>
-        <form className="form" onSubmit={handleSubmitOrder}>
-          <div className="form-group">
-            <label htmlFor="name">Name:</label>
-            <input
-              className="form-control"
-              type="text"
-              id="name"
-              name="name"
-              value={orderFormData.name}
-              onChange={handleInputChange}
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="email">Email:</label>
-            <input
-              className="form-control"
-              type="email"
-              id="email"
-              name="email"
-              value={orderFormData.email}
-              onChange={handleInputChange}
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="address">Address:</label>
-            <input
-              className="form-control"
-              type="text"
-              id="address"
-              name="address"
-              value={orderFormData.address}
-              onChange={handleInputChange}
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="totalCost">
-              Total Cost :Rs{totalPrice.toFixed(2)}+ 0 delivery charges
-            </label>
-            <input
-              className="form-control"
-              type="text"
-              id="totalCost"
-              name="totalCost"
-              value={totalPrice.toFixed(2)}
-              readOnly
-            />
-          </div>
-          <Button type="submit" className="btn btn-primary btn-block">
-            Submit Order
-          </Button>
-        </form>
+        <OrderForm
+          handleSubmitOrder={handleSubmitOrder}
+          handleInputChange={handleInputChange}
+          orderFormData={orderFormData}
+          totalPrice={totalPrice}
+        />
       </Container>
 
       <h

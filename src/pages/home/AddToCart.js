@@ -11,8 +11,7 @@ export function AddToCart({
   handleSubmitOrder,
 }) {
   return (
-    <>
-      {" "}
+    <section className="section">
       <div
         style={{
           display: "flex",
@@ -44,6 +43,6 @@ export function AddToCart({
         setOrderFormData={setOrderFormData}
         handleSubmitOrder={handleSubmitOrder}
       />
-    </>
+    </section>
   );
 }

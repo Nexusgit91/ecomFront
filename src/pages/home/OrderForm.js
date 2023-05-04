@@ -44,7 +44,7 @@ export function OrderForm({
             onChange={handleInputChange}
           />
         </div>
-        <div className="form-group">
+        <div className="form-group mb-3">
           <label htmlFor="totalCost">
             Total Cost :Rs{totalPrice.toFixed(2)}+ 0 delivery charges
           </label>
@@ -57,7 +57,7 @@ export function OrderForm({
             readOnly
           />
         </div>
-        <Button type="submit" className="btn btn-primary">
+        <Button type="submit" className="btn btn-primary btn-block">
           Submit Order
         </Button>
       </form>
