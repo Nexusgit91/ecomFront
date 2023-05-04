@@ -1,9 +1,9 @@
 import React from "react";
 import { Row, Col, Button, Card, Form, Modal, Table } from "react-bootstrap";
-
+import "./Product.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { FaChevronDown } from "react-icons/fa";
+
 import styled from "styled-components";
 
 const ProductCard = styled(Card)`

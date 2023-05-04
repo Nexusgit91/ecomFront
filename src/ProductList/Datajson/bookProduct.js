@@ -8,11 +8,7 @@ export const bookProducts = [
     quantity: 2,
 
     paymentMethod: "Credit Card",
-    images: [
-      require("../img/book1.jpg"),
-      require("../img/book1.jpg"),
-      require("../img/book1.jpg"),
-    ],
+    imgSrc: require("../img/book1.jpg"),
   },
   {
     id: 2,
@@ -23,11 +19,7 @@ export const bookProducts = [
     quantity: 2,
 
     paymentMethod: "Credit Card",
-    images: [
-      require("../img/book2.jpg"),
-      require("../img/book2.jpg"),
-      require("../img/book2.jpg"),
-    ],
+    imgSrc: require("../img/book1.jpg"),
   },
   {
     id: 3,
@@ -38,11 +30,7 @@ export const bookProducts = [
     quantity: 2,
 
     paymentMethod: "Credit Card",
-    images: [
-      require("../img/shirts.jpg"),
-      require("../img/shirts.jpg"),
-      require("../img/shirts.jpg"),
-    ],
+    imgSrc: require("../img/book1.jpg"),
   },
   {
     id: 4,
@@ -53,10 +41,6 @@ export const bookProducts = [
     quantity: 2,
     paymentMethod: "Credit Card",
 
-    images: [
-      require("../img/book1.jpg"),
-      require("../img/book1.jpg"),
-      require("../img/book1.jpg"),
-    ],
+    imgSrc: require("../img/book1.jpg"),
   },
 ];

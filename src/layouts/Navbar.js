@@ -5,6 +5,7 @@ import styled from "styled-components";
 import "./Nav.css";
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 function Navibar() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [name, setName] = useState("");
@@ -52,6 +53,7 @@ function Navibar() {
     // handle cart click event
     window.scrollTo(0, document.body.scrollHeight);
   };
+
   return (
     <Wrapper>
       <Navbar
@@ -60,7 +62,7 @@ function Navibar() {
         style={{ fontSize: "21px" }}
       >
         <NavLink className="navbar-brand" to="/">
-          <h style={{ marginLeft: "20px" }}>
+          <h style={{ marginLeft: "25px" }}>
             <font color="blue">N</font>
             <font color="green">e</font>
             <font color="red">x</font>
@@ -68,27 +70,20 @@ function Navibar() {
           </h>
         </NavLink>
         <div className=" d-md-none">
+          <h style={{ fontSize: "16px" }}> SadarBazar Market</h>
           <CartButton onClick={handleCartClick}>
             <FontAwesomeIcon icon={faShoppingCart} />
-            <CartCount
-              style={{ width: "25px", height: "30px", fontSize: "20px" }}
-            >
-              i
-            </CartCount>
           </CartButton>
         </div>
         <Navbar.Toggle aria-controls="basic-navbar-nav" className="me-3" />
         <Navbar.Collapse id="basic-navbar-nav ">
           <Nav className="ml-auto" style={{ fontWeight: "bold" }}>
-            <NavLink className="nav-link" to="/">
+            <CustomNavLink className="nav-link" to="/">
               Home
-            </NavLink>
-            <NavLink className="nav-link" to="/books">
-              Books
-            </NavLink>
-            <NavLink className="nav-link" to="/electronics">
+            </CustomNavLink>
+            <CustomNavLink className="nav-link" to="/electronics">
               Electronics
-            </NavLink>
+            </CustomNavLink>
             {name === "nexo 91" ? (
               <NavDropdown title="Admin" id="basic-nav-dropdown">
                 <NavDropdown.Item to="/orderList">Orders</NavDropdown.Item>
@@ -105,24 +100,24 @@ function Navibar() {
             )}
             {isLoggedIn ? (
               <>
-                <NavLink className="nav-link" to="/profile">
+                <CustomNavLink className="nav-link" to="/profile">
                   Your Orders
-                </NavLink>
-                <NavLink onClick={handleLogout} className="nav-link">
+                </CustomNavLink>
+                <CustomNavLink onClick={handleLogout} className="nav-link">
                   Logout
-                </NavLink>
-                <NavLink className="nav-link" to="#">
+                </CustomNavLink>
+                <CustomNavLink className="nav-link" to="#">
                   Hello, {name}
-                </NavLink>
+                </CustomNavLink>
               </>
             ) : (
               <>
-                <NavLink className="nav-link" to="/login">
+                <CustomNavLink className="nav-link" to="/login">
                   Login
-                </NavLink>
-                <NavLink className="nav-link" to="/signup">
+                </CustomNavLink>
+                <CustomNavLink className="nav-link" to="/signup">
                   Signup
-                </NavLink>
+                </CustomNavLink>
               </>
             )}
           </Nav>
@@ -146,6 +141,16 @@ function Navibar() {
 
 const Wrapper = styled.div`
   /* styles for Navbar */
+`;
+
+const CustomNavLink = styled(NavLink)`
+  color: #333;
+  font-size: 18px;
+  margin-right: 20px;
+
+  &:hover {
+    color: #555;
+  }
 `;
 
 const CartButton = styled.button`

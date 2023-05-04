@@ -132,7 +132,7 @@ function Dress() {
 
   return (
     <main>
-      <VideoBanner videoName={"raymond"} />
+      <VideoBanner videoName={"Rayminds"} />
       <IconGrid />
 
       <div className="section-center">

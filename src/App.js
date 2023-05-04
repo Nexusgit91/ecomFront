@@ -8,7 +8,6 @@ import "./App.css";
 import {
   Order,
   Dress,
-  Books,
   Navibar,
   Login,
   Profile,
@@ -21,6 +20,8 @@ import {
   SharedLayout,
   SignUp,
 } from "./pages";
+import { OrderList } from "./pages/order";
+import Electronics from "./ProductList/OtherShops/Electronics";
 
 function App() {
   return (
@@ -29,10 +30,11 @@ function App() {
         <Routes>
           <Route path="/" element={<SharedLayout />}>
             <Route index path="" element={<Home />} />
-
+            <Route index path="/orderList" element={<OrderList />} />
             <Route path="/signup" element={<SignUp />} />
             <Route path="/login" element={<Login />} />
 
+            <Route path="/electronics" element={<Electronics />} />
             <Route path="*" element={<NotFound />} />
           </Route>
 

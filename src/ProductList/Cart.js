@@ -2,10 +2,9 @@ import { useState } from "react";
 import { Container, Table, Button } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
 import "./Css/Cart.css";
-import IconGrid from "../pages/home/IconGrid";
+
 import "./ProductList.css";
 function Cart({ cartItems, handleRemoveFromCart, handleClearCart }) {
-  const history = useHistory();
   const userEmail = window.sessionStorage.getItem("email");
   const [orderFormData, setOrderFormData] = useState({
     name: "",

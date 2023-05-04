@@ -21,7 +21,7 @@ const IconGrid = () => {
           <Icon
             hovered={hovered}
             iconName="delivery"
-            icon={<FaTruck size={80} />}
+            icon={<FaTruck size={50} />}
             text="Free & Fast Delivery"
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
@@ -31,7 +31,7 @@ const IconGrid = () => {
           <Icon
             hovered={hovered}
             iconName="payment"
-            icon={<FaCreditCard size={80} />}
+            icon={<FaCreditCard size={50} />}
             text="Online Payment"
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
@@ -41,7 +41,7 @@ const IconGrid = () => {
           <Icon
             hovered={hovered}
             iconName="security"
-            icon={<FaShieldAlt size={80} />}
+            icon={<FaShieldAlt size={50} />}
             text="Secured Transaction"
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
@@ -51,7 +51,7 @@ const IconGrid = () => {
           <Icon
             hovered={hovered}
             iconName="offers"
-            icon={<FaGift size={80} />}
+            icon={<FaGift size={50} />}
             text="Daily Offers"
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
