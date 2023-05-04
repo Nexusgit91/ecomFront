@@ -18,8 +18,8 @@ import {
 import { bookProducts } from "../Datajson/bookProduct";
 import Cart from "../Cart";
 import TypingAnimation from "../../components/TypingAnimation";
-import VideoBanner from "../../components/VideoBanner";
-import IconGrid from "../../components/IconGrid";
+import VideoBanner from "../../pages/home/VideoBanner";
+import IconGrid from "../../pages/home/IconGrid";
 import BookCart from "./BookCart";
 
 import Products from "../../pages/DressShop/Products";

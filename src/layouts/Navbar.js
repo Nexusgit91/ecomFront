@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { Navbar, Nav, NavDropdown } from "react-bootstrap";
-import { NavLink, Link, useHistory } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 function Navibar() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [name, setName] = useState("");
-  const history = useHistory();
+  const history = useNavigate();
 
   useEffect(() => {
     const checkLoggedIn = async () => {
@@ -48,7 +48,7 @@ function Navibar() {
   return (
     <Wrapper>
       <Navbar expand="md" className="mb-0">
-        <Navbar.Brand to="/">
+        <NavLink className="navbar-brand" to="/">
           {" "}
           <h
             style={{
@@ -60,7 +60,7 @@ function Navibar() {
             <font color="red">x</font>
             <font color="black">o</font>
           </h>
-        </Navbar.Brand>
+        </NavLink>
         <Navbar.Toggle aria-controls="basic-navbar-nav" className="me-3" />
         <Navbar.Collapse id="basic-navbar-nav ">
           <Nav className="ml-auto" style={{ fontWeight: "bold" }}>

@@ -1,16 +1,17 @@
 import React from "react";
-import "./Video.css";
 import styled from "styled-components";
 
 const VideoBanner = (props) => {
   return (
-    <Wrapper className="video-banner">
-      <video autoPlay loop muted>
-        <source
-          src={require(`../Video/${props.videoName}.mp4`)}
-          type="video/mp4"
-        />
-      </video>
+    <Wrapper>
+      <div className="video-banner">
+        <video autoPlay loop muted>
+          <source
+            src={require(`../../assets/video/${props.videoName}.mp4`)}
+            type="video/mp4"
+          />
+        </video>
+      </div>
     </Wrapper>
   );
 };
@@ -19,6 +20,7 @@ const Wrapper = styled.section`
   .video-banner {
     height: 80vh;
     background-color: black;
+    width: 100vw;
   }
 
   .video-banner video {

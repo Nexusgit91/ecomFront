@@ -1,6 +1,5 @@
 import React from "react";
 import { Row, Col, Button, Card, Form, Modal, Table } from "react-bootstrap";
-import "../ProductList.css";
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";

@@ -1,30 +1,16 @@
 import { AddToCart } from "./AddToCart";
 import React, { useState } from "react";
-import "../ProductList.css";
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { FaChevronDown } from "react-icons/fa";
-import {
-  Container,
-  Row,
-  Col,
-  Card,
-  Button,
-  Modal,
-  Form,
-  Table,
-  Image,
-} from "react-bootstrap";
+import { Row, Col, Form } from "react-bootstrap";
 
 import { dressProducts } from "../../ProductList/Datajson/dressProducts";
 import Products from "./Products";
 
-import VideoBanner from "../../components/VideoBanner";
-import IconGrid from "../../components/IconGrid";
+import VideoBanner from "./VideoBanner";
+import IconGrid from "./IconGrid";
 
-import DressCart from "./DressCart";
-import TimeComponent from "../../ProductList/Timer/TimeComponet";
 import ProductModal from "./ProductModal";
 import styled from "styled-components";
 //Component
@@ -152,7 +138,7 @@ function Dress() {
   };
 
   return (
-    <>
+    <main>
       <VideoBanner videoName={"raymond"} />
       <IconGrid />
 
@@ -196,7 +182,7 @@ function Dress() {
           handleAddToCart={handleAddToCart}
         />
       </div>
-    </>
+    </main>
   );
 }
 

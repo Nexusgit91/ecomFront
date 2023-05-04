@@ -1,9 +1,8 @@
 import { useState } from "react";
 import { Container, Form, Button, Alert } from "react-bootstrap";
-import { faUser, faEnvelope, faLock } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import "./SignUp.css"; // import custom CSS styles
-import { useHistory } from "react-router-dom";
+
+import { useNavigate } from "react-router-dom";
+import styled from "styled-components";
 
 function SignUp() {
   const [formState, setFormState] = useState({
@@ -14,7 +13,7 @@ function SignUp() {
     confirmPassword: "",
   });
   const [emailTaken, setEmailTaken] = useState(false);
-  const Navigate = useHistory();
+  const Navigate = useNavigate();
   function handleChange(event) {
     const { name, value } = event.target;
     setFormState((prevFormState) => ({
@@ -61,7 +60,7 @@ function SignUp() {
   }
 
   return (
-    <section className="section">
+    <Wrapper as="section" className="section">
       <Container className="signup-container">
         <Form className="form" onSubmit={handleSubmit}>
           <h1>Sign Up</h1>
@@ -114,7 +113,7 @@ function SignUp() {
               required
             />
           </Form.Group>
-          <Form.Group className="mb-4" controlId="formConfirmPassword">
+          <Form.Group className="mb-5" controlId="formConfirmPassword">
             <Form.Label className="form-label">Confirm Password</Form.Label>
             <Form.Control
               type="password"
@@ -130,8 +129,43 @@ function SignUp() {
           </Button>
         </Form>
       </Container>
-    </section>
+    </Wrapper>
   );
 }
+
+const Wrapper = styled.main`
+  .signup-container {
+  }
+
+  .signup-container h1 {
+    text-align: center;
+  }
+
+  .signup-container .form-group {
+    margin-bottom: 20px;
+  }
+
+  .signup-container .form-label {
+    font-weight: bold;
+  }
+
+  .signup-container .submit-btn {
+    display: block;
+    margin: 0 auto;
+    width: 150px;
+    font-size: 18px;
+  }
+
+  .signup-container .fa {
+    margin-right: 10px;
+  }
+
+  @media (max-width: 768px) {
+    .signup-container {
+      width: 100%;
+      padding: 20px;
+    }
+  }
+`;
 
 export default SignUp;

@@ -1,21 +1,20 @@
 import { useState } from "react";
-
 import { Form, Button } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faEnvelope,
-  faLock,
+ 
   faEye,
   faEyeSlash,
 } from "@fortawesome/free-solid-svg-icons";
-import { Link, useHistory } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
+import styled from "styled-components";
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
 
-  const Navigate = useHistory();
+  const Navigate = useNavigate();
 
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
@@ -54,7 +53,8 @@ function Login() {
   };
 
   return (
-    <main className="section d-flex justify-content-center align-items-center">
+
+    <Wrapper className=" d-flex justify-content-center align-items-center">
       <Form
         onSubmit={handleSubmit}
         className="form border p-4 rounded"
@@ -102,8 +102,69 @@ function Login() {
           Forgot your password? <Link to="/forgot-password">Reset it here</Link>
         </p>
       </Form>
-    </main>
+    </Wrapper>
   );
 }
+
+const Wrapper= styled.section`
+.login-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.login-form {
+  width: 400px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.login-form h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.login-form input {
+  width: 100%;
+  margin-bottom: 15px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.login-form button {
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.login-form button:hover {
+  background-color: #0069d9;
+}
+
+.login-form .error-message {
+  color: #dc3545;
+  font-size: 14px;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.login-form .success-message {
+  color: #28a745;
+  font-size: 14px;
+  margin-top: 10px;
+  text-align: center;
+}
+`
 
 export default Login;

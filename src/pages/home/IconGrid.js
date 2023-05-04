@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Container, Row, Col } from "react-bootstrap";
+import { Row, Col } from "react-bootstrap";
 import { FaTruck, FaCreditCard, FaShieldAlt, FaGift } from "react-icons/fa";
 import styled from "styled-components";
 

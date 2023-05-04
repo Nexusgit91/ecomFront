@@ -1,9 +1,7 @@
 import { useState } from "react";
 import { Container, Table, Button } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
-import "../Css/Cart.css";
 
-import "../ProductList.css";
 function DressCart({ cartItems, handleRemoveFromCart, handleClearCart }) {
   const userEmail = window.sessionStorage.getItem("email");
   const [orderFormData, setOrderFormData] = useState({
@@ -100,7 +98,6 @@ function DressCart({ cartItems, handleRemoveFromCart, handleClearCart }) {
               </tr>
             ))}
             <tr className="f-je">
-
               <td>
                 <strong>Total:</strong>
               </td>

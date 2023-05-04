@@ -1,10 +1,10 @@
 import { useState } from "react";
-import { useHistory, useLocation, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const ResetPassword = () => {
-  const history = useHistory();
+  const history = useNavigate();
 
   const { token } = useParams();
 
