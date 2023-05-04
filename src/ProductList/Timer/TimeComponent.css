@@ -1,5 +1,5 @@
 .time-component {
-  width: 400px;
+  width: 100%;
   height: 500px;
   background-color: #de5050;
   display: flex;
@@ -29,7 +29,7 @@
 
 @media screen and (max-width: 768px) {
   .time-component {
-    width: 300px;
+    width: 320px;
     height: 200px;
   }
 

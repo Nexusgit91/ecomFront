@@ -13,6 +13,7 @@ import IconGrid from "./IconGrid";
 
 import ProductModal from "./ProductModal";
 import styled from "styled-components";
+import TimeComponent from "../../ProductList/Timer/TimeComponet";
 //Component
 function Dress() {
   const products = dressProducts;
@@ -129,14 +130,6 @@ function Dress() {
     }
   };
 
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-  };
-
   return (
     <main>
       <VideoBanner videoName={"raymond"} />
@@ -152,6 +145,29 @@ function Dress() {
               onChange={(e) => setSearchQuery(e.target.value)}
               style={{ marginBottom: "25px" }}
             />
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "center",
+              }}
+            >
+              <h2
+                style={{
+                  textAlign: "center",
+                  color: "#ff9900",
+                  fontWeight: "bold",
+                  fontFamily: "Arial, sans-serif",
+                  textShadow: "2px 2px 5px #333333",
+                  margin: "auto",
+                }}
+                className="mb-4"
+              >
+                Sales End's In
+              </h2>
+            </div>
+            <div className="mb-5">
+              <TimeComponent />
+            </div>
           </Col>
         </Row>
 
